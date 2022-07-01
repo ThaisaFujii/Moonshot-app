@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 extension ShapeStyle where Self == Color {
-    static var darBackGround: Color {
+    static var darkBackGround: Color {
         Color(red: 0.1, green: 0.1, blue: 0.2)
     }
     static var lightBackGround: Color {
