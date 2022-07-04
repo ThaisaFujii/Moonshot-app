@@ -7,6 +7,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isShowing = false
     let astronauts: [String:Astronaut] = Bundle.main.decode("astronauts.json")
     let missions: [Mission] = Bundle.main.decode("missions.json")
     
@@ -21,7 +22,8 @@ struct ContentView: View {
                 LazyVGrid(columns: columns) {
                     ForEach(missions) { mission in
                         NavigationLink {
-                            MissionView(mission: mission, astronauts: astronauts)
+                            //, astronauts: astronauts
+                            MissionView(mission: mission)
                         } label: {
                             VStack {
                                 Image(mission.image)
@@ -54,6 +56,22 @@ struct ContentView: View {
             .navigationTitle("Moonshot")
             .background(.darkBackGround)
             .preferredColorScheme(.dark)
+            // Challenge
+            .toolbar {
+                ToolbarItemGroup(placement: .bottomBar) {
+              //      NavigationLink(destination: ContentView(), isActive: $isShowing){}
+                    Button("Grid") {
+                        isShowing = false
+                        print("Pressed")
+                    }
+                    Spacer()
+                    NavigationLink(destination: ListView(), isActive: $isShowing){}
+                    Button("list") {
+                        isShowing = true
+                        print("Pressed")
+                    }
+                }
+            }
         }
     }
 }
@@ -61,6 +79,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .previewInterfaceOrientation(.landscapeLeft)
+            .previewInterfaceOrientation(.portraitUpsideDown)
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+// Codable is the ability to decode a hierarchy of data in one pass is invaluable.
 
 struct Mission: Codable, Identifiable {
     struct CrewRole: Codable {

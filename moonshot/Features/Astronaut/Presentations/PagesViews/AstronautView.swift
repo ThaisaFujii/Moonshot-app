@@ -8,21 +8,21 @@
 import SwiftUI
 
 struct AstronautView: View {
-    let astrounaut: Astronaut
+    let astronaut: Astronaut
     
     var body: some View {
         ScrollView {
             VStack {
-                Image(astrounaut.id)
+                Image(astronaut.id)
                     .resizable()
                     .scaledToFit()
                 
-                Text(astrounaut.description)
+                Text(astronaut.description)
                     .padding()
             }
         }
         .background(.darkBackGround)
-        .navigationTitle(astrounaut.name)
+        .navigationTitle(astronaut.name)
         .navigationBarTitleDisplayMode(.inline)
     }
 }
@@ -31,6 +31,6 @@ struct AstronautView_Previews: PreviewProvider {
     static let astronauts: [String: Astronaut] = Bundle.main.decode("astronauts.json")
     
     static var previews: some View {
-        AstronautView(astrounaut: astronauts["armstrong"]!)
+        AstronautView(astronaut: astronauts["armstrong"]!)
     }
 }
